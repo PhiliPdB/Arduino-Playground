@@ -17,10 +17,10 @@ void setup() {
   lcd.setCursor(0,1);
   lcd.write("Humidity: ");
 
+  dht.begin();
+
   Serial.begin(9600);
   Serial.println("WeatherStation:");
-
-  dht.begin();
 }
 
 void loop() {
@@ -38,17 +38,11 @@ void loop() {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
-
-  // Compute heat index in Celsius (isFahreheit = false)
-  float hic = dht.computeHeatIndex(t, h, false);
-
+  
   Serial.print("Humidity: ");
   Serial.print(h);
-  Serial.println("%");
+  Serial.println(" %\t");
   Serial.print("Temperature: ");
   Serial.print(t);
-  Serial.println(" *C");
-  Serial.print("Heat index: ");
-  Serial.print(hic);
   Serial.println(" *C");
 }
