@@ -1,9 +1,7 @@
-int ledPins[] = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-
 void setup() {
   // put your setup code here, to run once:
-  for (int i = 0; i < sizeof(ledPins); i++) {
-    pinMode(ledPins[i], OUTPUT);
+  for (int i = 0; i < 13; i++) {
+    pinMode(i+1, OUTPUT);
   }
 }
 
@@ -13,8 +11,8 @@ void loop() {
     digitalWrite(ledPins[i], HIGH);
   }
   delay(1000);              // wait for a second
-  for (int i = 0; i < sizeof(ledPins); i++) {
-    digitalWrite(ledPins[i], LOW);
+  for (int i = 0; i < 13; i++) {
+    digitalWrite(i+1, LOW);
   }
   delay(1000); 
 }
