@@ -6,10 +6,16 @@
 #define TIME_REQUEST  7    // ASCII bell character requests a time sync message
 
 int ledPins[] = {A5,2,3,4,5,6,7,8,9,10,11,12,13};
+
 byte leftHours;
 byte rightHours;
 byte leftMinutes;
 byte rightMinutes;
+
+int hours = 10;
+int minutes = 0;
+int oldMinutes;
+int oldHours;
 
 void setup() {
   for (int i = 0; i < sizeof(ledPins); i++) {
@@ -20,8 +26,26 @@ void setup() {
 
 void loop() {
 
-  int hours = 10;
-  int minutes = 21;
+  //int hours = 10;
+  //int minutes = 59;
+  
+  minutes++;
+  if(minutes == 60) {
+    minutes = 0;
+    hours++;
+  }
+  if(hours == 24) {
+    hours = 0;
+  }
+  delay(500);
+
+  //reset LEDs
+  if(oldMinutes == minutes && oldHours == hours) { return; }
+
+  //reset LEDs
+  for (int i = 0; i < sizeof(ledPins); i++) {
+    digitalWrite(ledPins[i], LOW);
+  }
 
   //hours
   if(hours < 10) {
@@ -64,4 +88,8 @@ void loop() {
       digitalWrite(ledPins[i-1], HIGH);
     }
   }
+
+  int oldMinutes = minutes;
+  int oldHours = hours;
+  
 }
