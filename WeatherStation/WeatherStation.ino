@@ -10,7 +10,7 @@ LiquidCrystal lcd(7,8,9,10,11,12);
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
-  // put your setup code here, to run once:
+  //start het LCD-scherm en zet daar de tekst nog zonder waarden neer
   lcd.begin(16,2);
   lcd.setCursor(0,0);
   lcd.write("Temp: ");
@@ -30,6 +30,7 @@ void loop() {
   delay(2000);
 }
 
+//functie voor het aflezen van de luchtvochtigheid en temperatuur
 void readDHT() {
   // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
@@ -42,7 +43,8 @@ void readDHT() {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
-  
+
+  //schrijft tekst met gelezen waarden naar scherm
   Serial.print("Humidity: ");
   Serial.print(h);
   Serial.println(" %\t");
