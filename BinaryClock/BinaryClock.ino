@@ -11,8 +11,8 @@ byte leftHours;
 byte rightHours;
 byte leftMinutes;
 byte rightMinutes;
-int hours;
-int minutes;
+int hours = 17;
+int minutes = 57;
 int oldMinutes;
 int oldHours;
 
@@ -26,9 +26,18 @@ void setup() {
 
 void loop() {
 
-  //haalt de nieuwe tijd op
-  hours = 17;
-  minutes = 37;
+  //(hier zou die de nieuwe tijd ophalen
+  
+  //tijd ophalen kregen we niet aan de praat, maar we hebben wel dit stukje code die de tijd om de seconde een minuut ophoogt (en om de 60 minuten het uur enz.) om het zo na te bootsen en te laten zien dat dat werkt
+  minutes++;
+  if(minutes == 60) {
+    minutes = 0;
+    hours++;
+  }
+  if(hours == 24) {
+    hours = 0;
+  }
+  delay(1000);
 
   //stopt de huidige loop als de oude tijd gelijk is aan de opghaalde tijd
   if(oldMinutes == minutes && oldHours == hours) { return; }
