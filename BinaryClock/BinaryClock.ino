@@ -12,8 +12,8 @@ byte rightHours;
 byte leftMinutes;
 byte rightMinutes;
 
-int hours = 10;
-int minutes = 0;
+int hours;
+int minutes;
 int oldMinutes;
 int oldHours;
 
@@ -26,20 +26,9 @@ void setup() {
 
 void loop() {
 
-  //int hours = 10;
-  //int minutes = 59;
-  
-  minutes++;
-  if(minutes == 60) {
-    minutes = 0;
-    hours++;
-  }
-  if(hours == 24) {
-    hours = 0;
-  }
-  delay(500);
+  hours = 10;
+  minutes = 50;
 
-  //reset LEDs
   if(oldMinutes == minutes && oldHours == hours) { return; }
 
   //reset LEDs
@@ -89,7 +78,7 @@ void loop() {
     }
   }
 
-  int oldMinutes = minutes;
-  int oldHours = hours;
+  oldMinutes = minutes;
+  oldHours = hours;
   
 }
