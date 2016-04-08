@@ -26,8 +26,8 @@ void setup() {
 
 void loop() {
 
-  hours = 10;
-  minutes = 50;
+  hours = 17;
+  minutes = 37;
 
   if(oldMinutes == minutes && oldHours == hours) { return; }
 
