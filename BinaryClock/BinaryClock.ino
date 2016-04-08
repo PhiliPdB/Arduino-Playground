@@ -11,6 +11,9 @@ byte leftHours;
 byte rightHours;
 byte leftMinutes;
 byte rightMinutes;
+
+int hours = 10;
+int minutes = 0;
 int oldMinutes;
 int oldHours;
 
@@ -23,9 +26,20 @@ void setup() {
 
 void loop() {
 
-  //int hours = ??;
-  //int minutes = ??;
+  //int hours = 10;
+  //int minutes = 59;
+  
+  minutes++;
+  if(minutes == 60) {
+    minutes = 0;
+    hours++;
+  }
+  if(hours == 24) {
+    hours = 0;
+  }
+  delay(500);
 
+  //reset LEDs
   if(oldMinutes == minutes && oldHours == hours) { return; }
 
   //reset LEDs
@@ -43,14 +57,14 @@ void loop() {
   } else {
     //I've got a problem
   }
-  for(int i=0; i<2; i++) {
-    if(bitRead(leftHours, i) == 1) {
-      digitalWrite(ledPins[i], HIGH);
+  for(int i=1; i<3; i++) {
+    if(bitRead(leftHours, (i-1)) == 1) {
+      digitalWrite(ledPins[i-1], HIGH);
     }
   }
-  for(int i=2; i<6; i++) {
-    if(bitRead(rightHours, (i-2)) == 1) {
-      digitalWrite(ledPins[i], HIGH);
+  for(int i=3; i<7; i++) {
+    if(bitRead(rightHours, (i-3)) == 1) {
+      digitalWrite(ledPins[i-1], HIGH);
     }
   }
 
@@ -64,14 +78,14 @@ void loop() {
   } else {
     //I've got a problem
   }
-  for(int i=6; i<9; i++) {
-    if(bitRead(leftMinutes, (i-6)) == 1) {
-      digitalWrite(ledPins[i], HIGH);
+  for(int i=7; i<10; i++) {
+    if(bitRead(leftMinutes, (i-7)) == 1) {
+      digitalWrite(ledPins[i-1], HIGH);
     }
   }
-  for(int i=9; i<13; i++) {
-    if(bitRead(rightMinutes, (i-9)) == 1) {
-      digitalWrite(ledPins[i], HIGH);
+  for(int i=10; i<14; i++) {
+    if(bitRead(rightMinutes, (i-10)) == 1) {
+      digitalWrite(ledPins[i-1], HIGH);
     }
   }
 
