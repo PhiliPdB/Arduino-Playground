@@ -11,8 +11,8 @@ byte leftHours;
 byte rightHours;
 byte leftMinutes;
 byte rightMinutes;
-int hours = 17;
-int minutes = 57;
+int hours = 0;
+int minutes = 0;
 int oldMinutes;
 int oldHours;
 
@@ -96,5 +96,4 @@ void loop() {
   //slaat de minuten en uren op om bij de volgende loop daarop te checken
   oldMinutes = minutes;
   oldHours = hours;
-  
 }
